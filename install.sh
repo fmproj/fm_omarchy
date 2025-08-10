@@ -13,24 +13,12 @@ catch_errors() {
 
 trap catch_errors ERR
 
-show_logo() {
-  clear
-  tte -i ~/.local/share/omarchy/logo.txt --frame-rate ${2:-120} ${1:-expand}
-  echo
-}
-
-show_subtext() {
-  echo "$1" | tte --frame-rate ${3:-640} ${2:-wipe}
-  echo
-}
-
 # Install prerequisites
 source $OMARCHY_INSTALL/preflight/aur.sh
 # source $OMARCHY_INSTALL/preflight/migrations.sh
 
 # Configuration
-show_logo beams 240
-show_subtext "Let's install Omarchy! [1/5]"
+echo "Let's install Omarchy! [1/5]"
 source $OMARCHY_INSTALL/config/identification.sh
 source $OMARCHY_INSTALL/config/config.sh
 source $OMARCHY_INSTALL/config/detect-keyboard-layout.sh
@@ -41,8 +29,7 @@ source $OMARCHY_INSTALL/config/login.sh
 source $OMARCHY_INSTALL/config/nvidia.sh
 
 # Development
-show_logo decrypt 920
-show_subtext "Installing terminal tools [2/5]"
+echo "Installing terminal tools [2/5]"
 source $OMARCHY_INSTALL/development/terminal.sh
 source $OMARCHY_INSTALL/development/development.sh
 source $OMARCHY_INSTALL/development/nvim.sh
@@ -50,8 +37,7 @@ source $OMARCHY_INSTALL/development/docker.sh
 source $OMARCHY_INSTALL/development/firewall.sh
 
 # Desktop
-show_logo slice 60
-show_subtext "Installing desktop tools [3/5]"
+echo "Installing desktop tools [3/5]"
 source $OMARCHY_INSTALL/desktop/desktop.sh
 source $OMARCHY_INSTALL/desktop/hyprlandia.sh
 source $OMARCHY_INSTALL/desktop/theme.sh
@@ -60,14 +46,12 @@ source $OMARCHY_INSTALL/desktop/fonts.sh
 source $OMARCHY_INSTALL/desktop/printer.sh
 
 # Apps
-show_logo expand
-show_subtext "Installing default applications [4/5]"
+echo "Installing default applications [4/5]"
 source $OMARCHY_INSTALL/apps/xtras.sh
 source $OMARCHY_INSTALL/apps/mimetypes.sh
 
 # Updates
-show_logo highlight
-show_subtext "Updating system packages [5/5]"
+echo "Updating system packages [5/5]"
 sudo updatedb
 sudo pacman -Syu --noconfirm
 
