@@ -56,5 +56,4 @@ sudo updatedb
 sudo pacman -Syu --noconfirm
 
 # Reboot
-show_logo laseretch 920
 gum confirm "Reboot to apply all settings?" && reboot
